@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="/static/style.css">
+    <title>Pet list</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Our Residents</h1>
+
+        <ul>
+            {% for pet in pets %}
+                <li>
+                    <strong><a href="/{{ pet.id }}">{{ pet.name }}</a></strong>
+                    {% if pet.photo_url %}
+                        <img src="{{ pet.photo_url }}" alt="Image of {{ pet.name }}" style="width: 100px; height: auto;">
+                    {% endif %}
+                    {% if pet.available %}
+                        <strong style="color: green;">Available</strong>
+                    {% else %}
+                        <span>Not Available</span>
+                    {% endif %}
+                </li>
+            {% endfor %}
+        </ul>
+     
+        <a href="/add" class="button">Add Pet</a>
+    </div>
+
+</body>
+</html>
